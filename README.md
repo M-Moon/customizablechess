@@ -1,2 +1,2 @@
 The readme
- of kings
+of kings
