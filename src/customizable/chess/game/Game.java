@@ -14,6 +14,11 @@ public class Game
         Tile testTile = board.getTileAtPosition(6, 6);
         System.out.println("The tile at rank 6, file 6 is: " + testTile);
         System.out.println("and its coordinate is: " + testTile.getTileCoord());
+
+        board.processFenString("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+
+        System.out.println(board.getBoard());
+        board.printTextBoard();
     }
 
     public ChessBoard getBoard()
