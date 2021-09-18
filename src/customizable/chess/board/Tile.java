@@ -12,6 +12,7 @@ public class Tile
     {
         this.tileCoord = tileCoord;
         this.isOccupied = false;
+        this.pieceOnTile = null;
     }
 
     public Tile(int tileCoord, Piece pieceOnTile)
@@ -35,6 +36,20 @@ public class Tile
     public boolean isOccupied()
     {
         return this.isOccupied;
+    }
+
+    public Piece getPieceOnTile()
+    {
+        if (isOccupied)
+            return pieceOnTile;
+        return null;
+    }
+
+    public String getPieceOnTileText()
+    {
+        if (isOccupied)
+            return pieceOnTile.getPieceLetter();
+        return "x";
     }
 
     public void placePieceOnTile(Piece pieceToPlace)

@@ -16,7 +16,8 @@ public abstract class Piece
 
     // final for immutability
     private final int colour;
-    protected int[] movement;
+    private int[] movement;
+    private String pieceLetter;
 
     /**
      * Constructor for the piece class. Colour is 0 for black or 1 for white, and movement is an array covering all directional movement. The first 4 numbers
@@ -42,10 +43,24 @@ public abstract class Piece
         return this.movement;
     }
 
+    public void setMovement(int[] movement)
+    {
+        this.movement = movement;
+    }
+
     public int getColour()
     {
         return this.colour;
     }
 
+    public String getPieceLetter()
+    {
+        return pieceLetter;
+    }
+
+    public void setPieceLetter(String pieceLetter)
+    {
+        this.pieceLetter = pieceLetter;
+    }
 
 }

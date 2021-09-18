@@ -10,7 +10,7 @@ public class ChessBoard
     public ChessBoard()
     {
         board = new Tile[64];
-        formEmptyBoard();
+        //formEmptyBoard();
     }
 
     // is forming empty board necessary?
@@ -25,11 +25,23 @@ public class ChessBoard
     // debugging method
     public void printTextBoard()
     {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < 8; j++)
             {
-                System.out.print(board[i+j]);
+                System.out.print(board[(i*8)+j].getPieceOnTileText());
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public void printTextBoard(Tile[] nboard)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                System.out.print(nboard[(i*8)+j].getPieceOnTileText());
             }
             System.out.print("\n");
         }
@@ -45,32 +57,37 @@ public class ChessBoard
             return;
         }
 
-        int fenLocation = 0;
-        for (int i = 0; i < 63; i++)
-        {
-            if (pieceTypeValid(fen.charAt(i)))
-            {
-                tempBoard[i] = new Tile(i, pieceFromChar(fen.charAt(fenLocation)));
-            } else if (Character.isDigit(fen.charAt(fenLocation))) // if it is a number, which dictates moving forward the amount of squares specified
-            {
-                i += Character.getNumericValue(fen.charAt(fenLocation)); // move up the specified amount of squares
-            }
-            fenLocation++;
-        }
-
-        // form board
+        // forming the board
         int boardLocation = 0;
         String fenBoard = fen.split(" ")[0];
+        //System.out.println(fenBoard);
         for (int i = 0; i < fenBoard.length(); i++)
         {
+            //System.out.println(i + " " + boardLocation);
             if (pieceTypeValid(fenBoard.charAt(i))) // if it is a valid piece, make current tile hold that piece
             {
                 tempBoard[boardLocation] = new Tile(boardLocation, pieceFromChar(fenBoard.charAt(i)));
+                //System.out.println("Piece is placed: " + tempBoard[boardLocation].getPieceOnTileText());
+                boardLocation++;
             } else if (Character.isDigit(fenBoard.charAt(i))) // if it is a number, which dictates moving forward the amount of squares specified
             {
-                boardLocation += Character.getNumericValue(fenBoard.charAt(i)); // move up specified amount of squares
+                for (int k = 0; k < Character.getNumericValue(fenBoard.charAt(i)); k++)
+                {
+                    tempBoard[boardLocation] = new Tile(boardLocation);
+                    //System.out.println("Empty space placed: " + tempBoard[boardLocation].getPieceOnTileText());
+                    boardLocation++;
+                }
+                //boardLocation += Character.getNumericValue(fenBoard.charAt(i)); // move up specified amount of squares
+            } else if (fenBoard.charAt(i) == '/') // the check for the other symbol(s)
+            {
+                continue;
+            } else
+            {
+                throw new IllegalArgumentException();
             }
+            //System.out.println("Board location & i: " + boardLocation + " " + i);
         }
+        this.board = tempBoard; // now that board has been successfully formed, the proper board can take its form.
     }
 
     /**
@@ -178,7 +195,7 @@ public class ChessBoard
     {
         for (char c: legalPieces)
         {
-            if (p == c || p == Character.toUpperCase(c))
+            if (p == c || p == Character.toUpperCase(c)) // if checked piece is equal to currently selected legal piece, or its uppercase variant, return true.
                 return true;
         }
         return false;
@@ -186,9 +203,26 @@ public class ChessBoard
 
     private Piece pieceFromChar(char p)
     {
+        int colour;
         if (Character.isLowerCase(p))
-            return new Pawn(0);
-        return new Pawn(1);
+            colour = 0;
+        else
+            colour = 1;
+
+        char pieceToCheck = Character.toLowerCase(p);
+
+        if (pieceToCheck == 'k')
+            return new King(colour);
+        else if (pieceToCheck == 'q')
+            return new Queen(colour);
+        else if (pieceToCheck == 'r')
+            return new Rook(colour);
+        else if (pieceToCheck == 'b')
+            return new Bishop(colour);
+        else if (pieceToCheck == 'n')
+            return new Knight(colour);
+        else
+            return new Pawn(colour);
     }
 
     /**
