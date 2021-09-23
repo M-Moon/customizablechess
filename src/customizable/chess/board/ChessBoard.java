@@ -203,11 +203,11 @@ public class ChessBoard
 
     private Piece pieceFromChar(char p)
     {
-        int colour;
+        Colour colour;
         if (Character.isLowerCase(p))
-            colour = 0;
+            colour = Colour.BLACK;
         else
-            colour = 1;
+            colour = Colour.WHITE;
 
         char pieceToCheck = Character.toLowerCase(p);
 

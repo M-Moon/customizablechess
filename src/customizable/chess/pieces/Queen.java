@@ -10,13 +10,13 @@ public class Queen extends Piece
      * @param colour the colour of the piece, 0 or 1
      * @param movement the movement of the piece defined in a single-dimension array, first orthogonal movement and then diagonal.
      */
-    public Queen(int colour, int[] movement)
+    public Queen(Colour colour, int[] movement)
     {
         super(colour, movement);
         setPieceLetter("q");
     }
 
-    public Queen(int colour)
+    public Queen(Colour colour)
     {
         super(colour);
         setMovement(new int[]{8, 8, 8, 8, 8, 8, 8, 8});

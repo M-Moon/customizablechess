@@ -11,7 +11,7 @@ public class King extends Piece
      * @param colour the colour of the piece, 0 or 1 (black or white)
      * @param movement the movement of the piece defined in a single-dimension array, first orthogonal movement and then diagonal.
      */
-    public King(int colour, int[] movement)
+    public King(Colour colour, int[] movement)
     {
         super(colour, movement);
         setPieceLetter("k");
@@ -21,7 +21,7 @@ public class King extends Piece
      * Constructor for the base king with its standard movement
      * @param colour the colour of the piece, 0 or 1 (black or white)
      */
-    public King(int colour)
+    public King(Colour colour)
     {
         super(colour);
         setMovement(new int[]{1, 1, 1, 1, 1, 1, 1, 1});

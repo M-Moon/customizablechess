@@ -10,13 +10,13 @@ public class Rook extends Piece
      * @param colour the colour of the piece, 0 or 1
      * @param movement the movement of the piece defined in a single-dimension array, first orthogonal movement and then diagonal.
      */
-    public Rook(int colour, int[] movement)
+    public Rook(Colour colour, int[] movement)
     {
         super(colour, movement);
         setPieceLetter("r");
     }
 
-    public Rook(int colour)
+    public Rook(Colour colour)
     {
         super(colour);
         setMovement(new int[]{8, 8, 8, 8, 0, 0, 0, 0});
