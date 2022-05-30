@@ -1,4 +1,4 @@
-package customizable.chess.pieces;
+package pieces;
 
 // the tricky piece! movement might need an extra number on the end of the array for L-movement.
 // making it so movement can be utterly customizable for all pieces can be added later. real pain though.

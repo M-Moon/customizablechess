@@ -1,6 +1,6 @@
-package customizable.chess.board;
+package board;
 
-import customizable.chess.pieces.Piece;
+import pieces.Piece;
 
 public class Tile
 {

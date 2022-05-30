@@ -1,4 +1,4 @@
-package customizable.chess.pieces;
+package pieces;
 
 public class Rook extends Piece
 {

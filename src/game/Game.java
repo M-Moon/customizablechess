@@ -1,7 +1,7 @@
-package customizable.chess.game;
+package game;
 
-import customizable.chess.board.ChessBoard;
-import customizable.chess.board.Tile;
+import board.ChessBoard;
+import board.Tile;
 
 public class Game
 {

@@ -1,4 +1,4 @@
-package customizable.chess.graphics;
+package graphics;
 
 public class GraphicalBoard
 {

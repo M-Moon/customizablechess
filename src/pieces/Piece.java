@@ -1,4 +1,4 @@
-package customizable.chess.pieces;
+package pieces;
 
 public abstract class Piece
 {

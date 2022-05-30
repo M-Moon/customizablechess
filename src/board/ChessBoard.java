@@ -1,6 +1,6 @@
-package customizable.chess.board;
+package board;
 
-import customizable.chess.pieces.*;
+import pieces.*;
 
 public class ChessBoard
 {
