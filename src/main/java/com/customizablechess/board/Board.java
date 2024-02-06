@@ -1,5 +1,11 @@
 package com.customizablechess.board;
 
-public class Board {
+import java.util.ArrayList;
+import java.util.List;
 
+import com.customizablechess.pieces.Piece;
+
+public class Board {
+    private List<Piece> pieces = new ArrayList<>();
+    private List<Tile> board = new ArrayList<>();
 }
